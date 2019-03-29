@@ -1,6 +1,7 @@
 from display import *
 from matrix import *
 from draw import *
+from gmath import *
 
 """
 Goes through the file named filename and performs all of the actions listed in that file.
@@ -68,19 +69,19 @@ def parse_file( fname, edges, polygons, transform, screen, color ):
 
         if line == 'sphere':
             #print 'SPHERE\t' + str(args)
-            add_sphere(edges,
+            add_sphere(polygons,
                        float(args[0]), float(args[1]), float(args[2]),
                        float(args[3]), step_3d)
 
         elif line == 'torus':
             #print 'TORUS\t' + str(args)
-            add_torus(edges,
+            add_torus(polygons,
                       float(args[0]), float(args[1]), float(args[2]),
                       float(args[3]), float(args[4]), step_3d)
 
         elif line == 'box':
             #print 'BOX\t' + str(args)
-            add_box(edges,
+            add_box(polygons,
                     float(args[0]), float(args[1]), float(args[2]),
                     float(args[3]), float(args[4]), float(args[5]))
 
@@ -140,13 +141,17 @@ def parse_file( fname, edges, polygons, transform, screen, color ):
             polygons = []
         elif line == 'display' or line == 'save':
             clear_screen(screen)
+            print("144")
             if edges:
                 draw_lines(edges, screen, color)
+                print("drawing edges")
             if polygons:
                 draw_polygons(polygons, screen, color)
+                print("drawing polygons")
 
             if line == 'display':
                 display(screen)
+                print("yeet")
             else:
                 save_extension(screen, args[0])
 
