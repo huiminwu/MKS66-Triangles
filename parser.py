@@ -141,17 +141,13 @@ def parse_file( fname, edges, polygons, transform, screen, color ):
             polygons = []
         elif line == 'display' or line == 'save':
             clear_screen(screen)
-            print("144")
             if edges:
                 draw_lines(edges, screen, color)
-                print("drawing edges")
             if polygons:
                 draw_polygons(polygons, screen, color)
-                print("drawing polygons")
 
             if line == 'display':
                 display(screen)
-                print("yeet")
             else:
                 save_extension(screen, args[0])
 
